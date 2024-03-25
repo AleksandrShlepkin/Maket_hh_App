@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct FavoriteView: View {
-    
+
     var userDefault: StorageManagerProtocol = StorageManager()
-    
+
     @EnvironmentObject private var coordinator: Coordinator
     @EnvironmentObject var viewModel: SearhViewModel
     @StateObject var vacancy = FavoriteViewModel()
     @State var mark: Bool = false
 
     var body: some View {
-        
+
         ScrollView {
             VStack {
                 ForEach(0...userDefault.getArray(.keyData).count, id: \.self) { index in
-                    
+
                     ZStack {
                         Rectangle()
                             .frame(width: 330, height: 230)
@@ -33,11 +33,11 @@ struct FavoriteView: View {
                                     .font(.system(size: 14))
                                     .foregroundStyle(Color.green)
                                 .lineLimit(2)
-                                
+
                                 Image(systemName: mark ? "heart" : "heart.fill")
                                     .foregroundStyle(mark ? Color.gray : Color.red)
                                     .onTapGesture {
-                                        
+
                                     }
                             }
                             Text(viewModel.vacancyModel?.vacancies[index].title ?? "")
@@ -57,12 +57,12 @@ struct FavoriteView: View {
                                 Text(viewModel.vacancyModel?.vacancies[index].experience.previewText ?? "")
                                     .font(.system(size: 14))
                                     .foregroundStyle(Color.white)
-                                
+
                             }
                             Text("Опубликовано 20 февраля")
                                 .font(.system(size: 14))
                                 .foregroundStyle(Color.gray)
-                            
+
                             Button {
 
                             } label: {
@@ -74,7 +74,7 @@ struct FavoriteView: View {
                                     .padding(.top)
                             }
                         }
-                        
+
                     }
                 }
             }
@@ -85,7 +85,7 @@ struct FavoriteView: View {
         .background(Color.black)
         .environmentObject(vacancy)
     }
-    
+
     func addFavoriteVacansy(_ mark: Bool, key: UserKeys, data: Vacancy) {
         if mark == false, userDefault.checkKey(key) {
             userDefault.remove(forKey: key)
@@ -93,7 +93,7 @@ struct FavoriteView: View {
             userDefault.setData(object: data, forKey: key)
         }
     }
-    
+
     func formaterCountHuman(_ count: Int) -> String {
         switch count {
         case 2...4:

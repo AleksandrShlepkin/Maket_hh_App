@@ -1,0 +1,6 @@
+framework module Pods_Maket_hh_App_Maket_hh_AppUITests {
+  umbrella header "Pods-Maket_hh_App-Maket_hh_AppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

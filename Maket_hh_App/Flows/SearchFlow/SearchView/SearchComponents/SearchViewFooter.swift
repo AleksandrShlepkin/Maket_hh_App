@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct SearchViewFooter: View {
-    
+
     var userDefault: StorageManagerProtocol = StorageManager()
     @EnvironmentObject var coordinator: Coordinator
     @EnvironmentObject var viewModel: SearhViewModel
     @EnvironmentObject var vacancy: VacancyViewModel
     @State var mark: Bool = false
-    
+
     var body: some View {
         VStack {
             ForEach(0...1, id: \.self) { index in
@@ -37,8 +37,8 @@ struct SearchViewFooter: View {
                                 if addFavoriteVacansy(mark, key: .keyData, data: vacancy.vacancyModel) == false {
                                     Image(systemName: "heart")
                                         .foregroundStyle(Color.gray)
-                                }else {
-                                    Image(systemName:"heart.fill")
+                                } else {
+                                Image(systemName: "heart.fill")
                                         .foregroundStyle(Color.red)
                                 }
                             }
@@ -94,7 +94,7 @@ struct SearchViewFooter: View {
         }
         .background(Color.black)
     }
-    
+
     func addFavoriteVacansy(_ mark: Bool, key: UserKeys, data: Vacancy?) -> Bool {
         if mark == false, userDefault.checkKey(key) {
             userDefault.remove(forKey: key)
@@ -104,7 +104,7 @@ struct SearchViewFooter: View {
             return true
         }
     }
-    
+
     func formaterCountHuman(_ count: Int) -> String {
         switch count {
         case 2...4:

@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct FullFooter: View {
-    
     var userDefault: StorageManagerProtocol = StorageManager()
-    
+
     @EnvironmentObject var viewModel: SearhViewModel
     @EnvironmentObject private var coordinator: Coordinator
     @EnvironmentObject var vacancy: VacancyViewModel
     @State var mark: Bool = false
-    
+
     var body: some View {
-        
+
         ScrollView {
             VStack {
                 ForEach(0...5, id: \.self) { index in
@@ -32,7 +31,7 @@ struct FullFooter: View {
                                     .font(.system(size: 14))
                                     .foregroundStyle(Color.green)
                                     .lineLimit(2)
-                                
+
                                 Image(systemName: mark ? "heart" : "heart.fill")
                                     .foregroundStyle(mark ? Color.gray : Color.red)
                                     .onTapGesture {
