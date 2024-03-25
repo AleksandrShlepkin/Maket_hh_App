@@ -14,7 +14,6 @@ struct LoginView: View {
     var body: some View {
             ScrollView{
                     HStack {
-                        
                         Text("Вход в личный кабинет")
                             .font(.title2)
                             .foregroundStyle(Color.white)
@@ -31,8 +30,6 @@ struct LoginView: View {
                         
                     }
                     .padding()
-                
-                
             }
             .background(Color.black)
         }

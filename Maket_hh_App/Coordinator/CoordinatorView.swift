@@ -16,6 +16,7 @@ struct CoordinatorView: View {
             coordinator.getPage(.login)
                 .navigationDestination(for: Pages.self) { page in
                     coordinator.getPage(page)
+                        .navigationBarBackButtonHidden(true)
                 }
                 .fullScreenCover(item: $coordinator.fullScreenCover) { screen in
                     coordinator.fullScreen(screen)

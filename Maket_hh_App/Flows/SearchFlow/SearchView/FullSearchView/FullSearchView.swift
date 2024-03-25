@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct FullSearchView: View {
+        
     var body: some View {
         VStack{
             FullHeader()
 
             FullFooter()
-
         }
         .background(Color.black)
-
     }
 }
 

@@ -11,7 +11,6 @@ struct SearchViewMiddle: View {
     var body: some View {
         ScrollView(.horizontal) {
             HStack {
-                
                 ForEach(0...4, id: \.self) { item in
                     ZStack {
                         Rectangle()

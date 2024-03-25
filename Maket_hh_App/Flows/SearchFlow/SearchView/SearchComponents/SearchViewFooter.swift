@@ -9,24 +9,40 @@ import SwiftUI
 
 struct SearchViewFooter: View {
     
-    @StateObject var viewModel = SearhViewModel(networkService: APIService())
+    var userDefault: StorageManagerProtocol = StorageManager()
     @EnvironmentObject var coordinator: Coordinator
-
+    @EnvironmentObject var viewModel: SearhViewModel
+    @EnvironmentObject var vacancy: VacancyViewModel
+    @State var mark: Bool = false
+    
     var body: some View {
-        
         VStack {
             ForEach(0...1, id: \.self) { index in
-                
                 ZStack {
                     Rectangle()
                         .frame(width: 330, height: 230)
                         .foregroundStyle(Color.gray.opacity(0.5))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     VStack(alignment: .leading, spacing: 5) {
-                        Text("Сейчас просматривает \(viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0) \(formaterCountHuman(_:viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0))")
-                            .font(.system(size: 14))
-                            .foregroundStyle(Color.green)
-                            .lineLimit(2)
+                        HStack(spacing: 50) {
+                            Text("Сейчас просматривает \(viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0) \(formaterCountHuman(_:viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0))")
+                                .font(.system(size: 14))
+                                .foregroundStyle(Color.green)
+                                .lineLimit(2)
+                            Button {
+                                vacancy.vacancyModel = viewModel.vacancyModel?.vacancies[index]
+                                addFavoriteVacansy(mark, key: .keyData, data: vacancy.vacancyModel)
+                                mark.toggle()
+                            } label: {
+                                if addFavoriteVacansy(mark, key: .keyData, data: vacancy.vacancyModel) == false {
+                                    Image(systemName: "heart")
+                                        .foregroundStyle(Color.gray)
+                                }else {
+                                    Image(systemName:"heart.fill")
+                                        .foregroundStyle(Color.red)
+                                }
+                            }
+                        }
                         Text(viewModel.vacancyModel?.vacancies[index].title ?? "")
                             .font(.title3)
                             .foregroundStyle(Color.white)
@@ -45,12 +61,14 @@ struct SearchViewFooter: View {
                                 .font(.system(size: 14))
                                 .foregroundStyle(Color.white)
                         }
-                        Text("Опубликовано 20 февраля")
+                        Text(viewModel.vacancyModel?.vacancies[index].publishedDate ?? "")
                             .font(.system(size: 14))
                             .foregroundStyle(Color.gray)
-                        
-                        NavigationLink(destination: LoginView()) {
-                            Text("Подтвердить")
+                        Button {
+                            vacancy.vacancyModel = viewModel.vacancyModel?.vacancies[index]
+                            coordinator.fullScreenPresent(.description)
+                        } label: {
+                            Text("Откликнуться")
                                 .frame(width: 296, height: 30)
                                 .foregroundStyle(.white)
                                 .background(Color.green)
@@ -63,9 +81,8 @@ struct SearchViewFooter: View {
             .onAppear {
                 viewModel.fetchVacancy()
             }
-            
             Button {
-                coordinator.fullScreenPresent(.fuulSearch)
+                coordinator.fullScreenPresent(.fullSearch)
             } label: {
                 Text("Еще 143 вакансии")
                     .frame(maxWidth: .infinity, minHeight: 60)
@@ -74,11 +91,18 @@ struct SearchViewFooter: View {
                     .clipShape(RoundedRectangle(cornerRadius: 5))
                     .padding()
             }
-            
-            
-            
         }
         .background(Color.black)
+    }
+    
+    func addFavoriteVacansy(_ mark: Bool, key: UserKeys, data: Vacancy?) -> Bool {
+        if mark == false, userDefault.checkKey(key) {
+            userDefault.remove(forKey: key)
+            return false
+        } else {
+            userDefault.setData(object: data, forKey: .keyData)
+            return true
+        }
     }
     
     func formaterCountHuman(_ count: Int) -> String {
@@ -107,5 +131,5 @@ struct SearchViewFooter: View {
     }
 }
 #Preview {
-    SearchViewFooter()
+    SearchViewFooter(mark: false)
 }

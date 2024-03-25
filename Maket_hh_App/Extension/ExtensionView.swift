@@ -41,7 +41,6 @@ extension View {
                 .border(Color.black, width: 2)
         }
     }
-
 }
 
 extension NavigationLink {

@@ -1,26 +1,27 @@
 //
-//  FullFooter.swift
+//  FavoriteView.swift
 //  Maket_hh_App
 //
-//  Created by Александр Коротков on 23.03.2024.
+//  Created by Александр Коротков on 24.03.2024.
 //
 
 import SwiftUI
 
-struct FullFooter: View {
+struct FavoriteView: View {
     
     var userDefault: StorageManagerProtocol = StorageManager()
     
-    @EnvironmentObject var viewModel: SearhViewModel
     @EnvironmentObject private var coordinator: Coordinator
-    @EnvironmentObject var vacancy: VacancyViewModel
+    @EnvironmentObject var viewModel: SearhViewModel
+    @StateObject var vacancy = FavoriteViewModel()
     @State var mark: Bool = false
-    
+
     var body: some View {
         
         ScrollView {
             VStack {
-                ForEach(0...5, id: \.self) { index in
+                ForEach(0...userDefault.getArray(.keyData).count, id: \.self) { index in
+                    
                     ZStack {
                         Rectangle()
                             .frame(width: 330, height: 230)
@@ -31,14 +32,12 @@ struct FullFooter: View {
                                 Text("Сейчас просматривает \(viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0) \(formaterCountHuman(_:viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0))")
                                     .font(.system(size: 14))
                                     .foregroundStyle(Color.green)
-                                    .lineLimit(2)
+                                .lineLimit(2)
                                 
                                 Image(systemName: mark ? "heart" : "heart.fill")
                                     .foregroundStyle(mark ? Color.gray : Color.red)
                                     .onTapGesture {
-                                        vacancy.vacancyModel = viewModel.vacancyModel?.vacancies[index]
-                                        addFavoriteVacansy(mark, key: .keyData, data: vacancy.vacancyModel!)
-                                        mark.toggle()
+                                        
                                     }
                             }
                             Text(viewModel.vacancyModel?.vacancies[index].title ?? "")
@@ -58,14 +57,14 @@ struct FullFooter: View {
                                 Text(viewModel.vacancyModel?.vacancies[index].experience.previewText ?? "")
                                     .font(.system(size: 14))
                                     .foregroundStyle(Color.white)
+                                
                             }
                             Text("Опубликовано 20 февраля")
                                 .font(.system(size: 14))
                                 .foregroundStyle(Color.gray)
                             
                             Button {
-                                vacancy.vacancyModel = viewModel.vacancyModel?.vacancies[index]
-                                coordinator.fullScreenPresent(.description)
+
                             } label: {
                                 Text("Откликнуться")
                                     .frame(width: 296, height: 30)
@@ -75,10 +74,8 @@ struct FullFooter: View {
                                     .padding(.top)
                             }
                         }
+                        
                     }
-                }
-                .onAppear {
-                    viewModel.fetchVacancy()
                 }
             }
             .background(Color.black)
@@ -123,7 +120,6 @@ struct FullFooter: View {
     }
 }
 
-
 #Preview {
-    FullFooter()
+    FavoriteView()
 }

@@ -13,6 +13,7 @@ final class SearhViewModel: ObservableObject {
     private var cancellbales = Set<AnyCancellable>()
     
     @Published var vacancyModel: Welcome?
+    
     let networkService: APIServiceProtocol?
     
     init(networkService: APIServiceProtocol) {

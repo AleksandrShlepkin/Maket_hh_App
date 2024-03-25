@@ -14,14 +14,11 @@ enum StateButton: Hashable {
 struct IndividualsView: View {
     
     @EnvironmentObject var coordinator: Coordinator
-    
     @State var emailText: String = ""
     @State var disactiveState: Bool = true
     @FocusState var focusState: StateButton?
     @EnvironmentObject private var coordinatro: Coordinator
 
-    
-    
     var body: some View {
         VStack(alignment: .leading) {
             Text("Поиск работы")
@@ -53,7 +50,6 @@ struct IndividualsView: View {
                             }
                         }
                         
-                        
                         if disactiveState == false   {
                             
                             Button("", image: .control) {
@@ -79,7 +75,6 @@ struct IndividualsView: View {
                         .disbleWithOpacity(disactiveState)
                 }
 
-                
                 NavigationLink(destination: LegalEntitiesView()) {
                     Text("Войти с паролем")
                         .foregroundStyle(.blue)
@@ -88,8 +83,6 @@ struct IndividualsView: View {
         }
         .background(Color(hex: "222325"))
     }
-    
-
 }
 
 #Preview {

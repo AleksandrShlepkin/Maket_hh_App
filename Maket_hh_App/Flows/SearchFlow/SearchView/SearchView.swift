@@ -11,27 +11,22 @@ struct SearchView: View {
     
     @EnvironmentObject private var coordinator: Coordinator
     
-    
     var body: some View {
         ScrollView {
             VStack {
                 SearchViewHeader()
-                
                 SearchViewMiddle()
                     .padding(.leading)
                 Text("Вакансии для вас")
                     .font(.title2)
                     .foregroundStyle(Color.white)
-                
-                SearchViewFooter()
-                
+                SearchViewFooter(mark: false)
             }
             .background(Color.black)
-            
         }
         .scrollIndicators(.hidden)
         .background(Color.black)
-        .tableColumnHeaders(.visible)
+        .tableColumnHeaders(.visible)    
     }
 }
 

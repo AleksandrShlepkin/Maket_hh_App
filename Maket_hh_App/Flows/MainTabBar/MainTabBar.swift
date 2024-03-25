@@ -19,7 +19,7 @@ struct MainTabBar: View {
                     Text("Search")
                         .foregroundStyle(Color(.gray))
                 }
-            SearchView()
+            FavoriteView()
                 .tabItem {
                     Image(systemName: "heart")
                     Text("Search")
@@ -47,7 +47,6 @@ struct MainTabBar: View {
         .toolbar(.visible, for: .tabBar)
         .toolbarBackground(Color.black, for: .tabBar)
         .toolbarColorScheme(.dark, for: .tabBar)
-        
     }
 }
 
