@@ -14,7 +14,7 @@ struct SearchViewHeader: View {
             HStack {
                 ZStack{
                     Rectangle()
-                        .frame(width: 300, height: 50)
+                        .frame(maxWidth: .infinity, minHeight: 50)
                         .foregroundColor(.gray.opacity(0.5))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     HStack{

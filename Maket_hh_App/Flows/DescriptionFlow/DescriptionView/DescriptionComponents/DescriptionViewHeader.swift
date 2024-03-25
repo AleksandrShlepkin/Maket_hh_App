@@ -18,7 +18,7 @@ struct DescriptionViewHeader: View {
                     .frame(maxWidth: .infinity, maxHeight: 50)
                     .foregroundColor(.clear)
                 Button("", image: .back) {
-                    coordinator.fullScreenPresent(.fullSearch)
+                    coordinator.fullScreenPresent(.search)
                 }
                 .padding(.leading, -250)
                 Image(.eye)

@@ -16,12 +16,12 @@ struct FullHeader: View {
             HStack {
                 ZStack{
                     Rectangle()
-                        .frame(width: 300, height: 50)
+                        .frame(maxWidth: .infinity, maxHeight: 50)
                         .foregroundColor(.gray.opacity(0.5))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     HStack{
                         Button("", image: .back) {
-                            coordinator.pagePresent(.tab)
+                            coordinator.fullScreenPresent(.tab)
                         }
                         Text("Должность, ключевые слова")
                             .foregroundStyle(Color(.lightGray))

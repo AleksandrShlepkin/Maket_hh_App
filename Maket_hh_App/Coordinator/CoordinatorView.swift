@@ -13,14 +13,16 @@ struct CoordinatorView: View {
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.getPage(.tab)
+            
+            coordinator.fullScreen(.tab)
+                .fullScreenCover(item: $coordinator.fullScreenCover) { screen in
+                    coordinator.fullScreen(screen)
+                }
                 .navigationDestination(for: Pages.self) { page in
                     coordinator.getPage(page)
                         .navigationBarBackButtonHidden(true)
                 }
-                .fullScreenCover(item: $coordinator.fullScreenCover) { screen in
-                    coordinator.fullScreen(screen)
-                }
+
         }
         .environmentObject(coordinator)
     }

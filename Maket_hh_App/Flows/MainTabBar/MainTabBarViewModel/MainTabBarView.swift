@@ -11,7 +11,7 @@ public enum Images: String {
     case search = "Search"
     case favorite = "Favor"
     case response = "MailImage"
-    case message = "messege"
+    case message = "message"
     case profile = "profile"
 }
 

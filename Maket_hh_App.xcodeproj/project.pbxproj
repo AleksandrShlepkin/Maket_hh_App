@@ -49,7 +49,7 @@
 		CFC820D52BAC655B00BFF296 /* SearhViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC820D42BAC655B00BFF296 /* SearhViewModel.swift */; };
 		CFC820D72BAC6C0300BFF296 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC820D62BAC6C0300BFF296 /* NetworkLogger.swift */; };
 		CFC820D92BAC71D700BFF296 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC820D82BAC71D700BFF296 /* String.swift */; };
-		CFC820DC2BACAA9600BFF296 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC820DB2BACAA9600BFF296 /* ContainerView.swift */; };
+		CFC820DC2BACAA9600BFF296 /* ConordinatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC820DB2BACAA9600BFF296 /* ConordinatorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,7 +115,7 @@
 		CFC820D42BAC655B00BFF296 /* SearhViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearhViewModel.swift; sourceTree = "<group>"; };
 		CFC820D62BAC6C0300BFF296 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		CFC820D82BAC71D700BFF296 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
-		CFC820DB2BACAA9600BFF296 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		CFC820DB2BACAA9600BFF296 /* ConordinatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConordinatorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -453,7 +453,7 @@
 		CFC820DA2BACAA6D00BFF296 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
-				CFC820DB2BACAA9600BFF296 /* ContainerView.swift */,
+				CFC820DB2BACAA9600BFF296 /* ConordinatorViewModel.swift */,
 				CF5282512BAE2709008236C6 /* CoordinatorView.swift */,
 			);
 			path = Coordinator;
@@ -621,7 +621,7 @@
 				CF5282672BB03034008236C6 /* DescriptionViewHeader.swift in Sources */,
 				CF52827E2BB1A9AC008236C6 /* LoginViewModel.swift in Sources */,
 				CFC820A92BA89C4500BFF296 /* LoginView.swift in Sources */,
-				CFC820DC2BACAA9600BFF296 /* ContainerView.swift in Sources */,
+				CFC820DC2BACAA9600BFF296 /* ConordinatorViewModel.swift in Sources */,
 				CFC820D72BAC6C0300BFF296 /* NetworkLogger.swift in Sources */,
 				CFC820782BA8572B00BFF296 /* Maket_hh_AppApp.swift in Sources */,
 				CF5282652BB02FE8008236C6 /* DescriptionViewFooter.swift in Sources */,

@@ -13,10 +13,9 @@ struct SearchView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
+            VStack(alignment: .leading) {
                 SearchViewHeader()
                 SearchViewMiddle()
-                    .padding(.leading)
                 Text("Вакансии для вас")
                     .font(.title2)
                     .foregroundStyle(Color.white)

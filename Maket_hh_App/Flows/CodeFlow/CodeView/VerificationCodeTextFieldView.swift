@@ -68,7 +68,7 @@ struct VerificationCodeTextFieldView: View {
         }
         
         if value == ["1", "2", "3", "4"] {
-            coordinator.pagePresent(.tab)
+            coordinator.fullScreenPresent(.tab)
             coordinator.goToRoot()
         }
     }

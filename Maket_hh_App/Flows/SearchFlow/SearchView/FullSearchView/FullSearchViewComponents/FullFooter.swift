@@ -23,12 +23,12 @@ struct FullFooter: View {
                 ForEach(0...5, id: \.self) { index in
                     ZStack {
                         Rectangle()
-                            .frame(width: 330, height: 230)
+                            .frame(maxWidth: 370, minHeight: 230)
                             .foregroundStyle(Color.gray.opacity(0.5))
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         VStack(alignment: .leading, spacing: 5) {
                             HStack(spacing: 50) {
-                                Text("Сейчас просматривает \(viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0) \(formaterCountHuman(_:viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0))")
+                                Text("Сейчас просматривает \(viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0) \(viewModel.formaterCountHuman(_:viewModel.vacancyModel?.vacancies[index].lookingNumber ?? 0))")
                                     .font(.system(size: 14))
                                     .foregroundStyle(Color.green)
                                     .lineLimit(2)
@@ -68,7 +68,7 @@ struct FullFooter: View {
                                 coordinator.fullScreenPresent(.description)
                             } label: {
                                 Text("Откликнуться")
-                                    .frame(width: 296, height: 30)
+                                    .frame(maxWidth: 250, maxHeight: 30)
                                     .foregroundStyle(.white)
                                     .background(Color.green)
                                     .clipShape(RoundedRectangle(cornerRadius: 20))
@@ -97,30 +97,6 @@ struct FullFooter: View {
         }
     }
     
-    func formaterCountHuman(_ count: Int) -> String {
-        switch count {
-        case 2...4:
-            return "человека"
-        case 22...24:
-            return "человека"
-        case 32...34:
-            return "человека"
-        case 42...44:
-            return "человека"
-        case 52...54:
-            return "человека"
-        case 62...64:
-            return "человека"
-        case 72...74:
-            return "человека"
-        case 82...84:
-            return "человека"
-        case 92...94:
-            return "человека"
-        default:
-            return "человек"
-        }
-    }
 }
 
 

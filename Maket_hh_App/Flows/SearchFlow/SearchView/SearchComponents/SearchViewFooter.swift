@@ -20,7 +20,7 @@ struct SearchViewFooter: View {
             ForEach(0...1, id: \.self) { index in
                 ZStack {
                     Rectangle()
-                        .frame(width: 330, height: 230)
+                        .frame(maxWidth: 350, minHeight: 230)
                         .foregroundStyle(Color.gray.opacity(0.5))
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     VStack(alignment: .leading, spacing: 5) {
