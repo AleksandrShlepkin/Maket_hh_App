@@ -13,7 +13,7 @@ struct CoordinatorView: View {
     
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.getPage(.login)
+            coordinator.getPage(.tab)
                 .navigationDestination(for: Pages.self) { page in
                     coordinator.getPage(page)
                         .navigationBarBackButtonHidden(true)

@@ -8,13 +8,13 @@
 import SwiftUI
 
 enum Pages: String, Identifiable {
-    case login, verify
+    case login, verify, tab
     
     var id: String { self.rawValue }
 }
 
 enum FullScreenCover: String, Identifiable, CaseIterable {
-    case tab, fullSearch, search, description
+    case fullSearch, search, description
     
     var id: String { self.rawValue }
 }
@@ -45,14 +45,15 @@ final class Coordinator: ObservableObject {
             LoginView()
         case .verify:
             CodeView()
+        case .tab:
+            MainTabBar()
         }
     }
     
     @ViewBuilder
     func fullScreen(_ screen: FullScreenCover) -> some View {
         switch screen {
-        case .tab:
-            MainTabBar()
+
         case .fullSearch:
             FullSearchView()
         case .search:

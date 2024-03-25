@@ -21,7 +21,7 @@ struct FullHeader: View {
                         .clipShape(RoundedRectangle(cornerRadius: 10))
                     HStack{
                         Button("", image: .back) {
-                            coordinator.fullScreenPresent(.tab)
+                            coordinator.pagePresent(.tab)
                         }
                         Text("Должность, ключевые слова")
                             .foregroundStyle(Color(.lightGray))

@@ -14,7 +14,7 @@ enum StateButton: Hashable {
 struct IndividualsView: View {
     
     @EnvironmentObject var coordinator: Coordinator
-    @State var emailText: String = ""
+    @EnvironmentObject var emailText: LoginViewModel
     @State var disactiveState: Bool = true
     @FocusState var focusState: StateButton?
     @EnvironmentObject private var coordinatro: Coordinator
@@ -29,7 +29,7 @@ struct IndividualsView: View {
             HStack(alignment: .center) {
                 ZStack {
                     Rectangle()
-                        .borderRectangle(activeState: disactiveState, text: emailText )
+                        .borderRectangle(activeState: disactiveState, text: emailText.textEmail ?? "" )
                     
                     HStack {
                         if disactiveState == true  {
@@ -37,13 +37,13 @@ struct IndividualsView: View {
                                 .padding(.leading, 10)
                         }
                         
-                        TextField("", text: $emailText, prompt: Text("Электронная почта или телефон")
+                        TextField("", text: Binding(get: {emailText.textEmail ?? ""}, set: {emailText.textEmail = $0 }), prompt: Text("Электронная почта или телефон")
                             .foregroundStyle(Color(.lightGray))
                             .font(.system(size: 14)))
                         .foregroundStyle(.white)
                         .padding()
-                        .onChange(of: emailText) { newValue in
-                            if emailText == "" {
+                        .onChange(of: emailText.textEmail) { newValue in
+                            if emailText.textEmail == "" {
                                 disactiveState = true
                             } else {
                                 disactiveState = false
@@ -53,7 +53,7 @@ struct IndividualsView: View {
                         if disactiveState == false   {
                             
                             Button("", image: .control) {
-                                emailText = ""
+                                emailText.textEmail = ""
                                 disactiveState.toggle()
                             }
                         }
@@ -63,16 +63,28 @@ struct IndividualsView: View {
             .padding()
             
             HStack{
-                Button {
-                    coordinator.pagePresent(.verify)
-                } label: {
-                    Text("Продолжить")
-                        .frame(width: 170, height: 40)
-                        .foregroundStyle(.white)
-                        .background(Color.blue)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .padding()
-                        .disbleWithOpacity(disactiveState)
+                
+                if disactiveState == true {
+                        Text("Продолжить")
+                            .frame(width: 170, height: 40)
+                            .foregroundStyle(.white)
+                            .background(Color.blue.opacity(0.3))
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .padding()
+                            .disbleWithOpacity(disactiveState)
+                    
+                } else {
+                    Button {
+                        coordinator.pagePresent(.verify)
+                    } label: {
+                        Text("Продолжить")
+                            .frame(width: 170, height: 40)
+                            .foregroundStyle(.white)
+                            .background(Color.blue)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                            .padding()
+                            .disbleWithOpacity(disactiveState)
+                    }
                 }
 
                 NavigationLink(destination: LegalEntitiesView()) {

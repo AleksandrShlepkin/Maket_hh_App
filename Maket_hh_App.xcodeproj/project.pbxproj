@@ -19,6 +19,8 @@
 		CF5282762BB06FAF008236C6 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5282752BB06FAF008236C6 /* FavoriteViewModel.swift */; };
 		CF5282792BB0718E008236C6 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5282782BB0718E008236C6 /* StorageManager.swift */; };
 		CF52827C2BB0751A008236C6 /* FavoriteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52827B2BB0751A008236C6 /* FavoriteModel.swift */; };
+		CF52827E2BB1A9AC008236C6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF52827D2BB1A9AC008236C6 /* LoginViewModel.swift */; };
+		CF5282812BB1C384008236C6 /* MainTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF5282802BB1C384008236C6 /* MainTabBarView.swift */; };
 		CFC820782BA8572B00BFF296 /* Maket_hh_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC820772BA8572B00BFF296 /* Maket_hh_AppApp.swift */; };
 		CFC8207A2BA8572B00BFF296 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC820792BA8572B00BFF296 /* ContentView.swift */; };
 		CFC8207C2BA8572C00BFF296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CFC8207B2BA8572C00BFF296 /* Assets.xcassets */; };
@@ -80,6 +82,8 @@
 		CF5282752BB06FAF008236C6 /* FavoriteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewModel.swift; sourceTree = "<group>"; };
 		CF5282782BB0718E008236C6 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		CF52827B2BB0751A008236C6 /* FavoriteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteModel.swift; sourceTree = "<group>"; };
+		CF52827D2BB1A9AC008236C6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		CF5282802BB1C384008236C6 /* MainTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarView.swift; sourceTree = "<group>"; };
 		CFC820742BA8572B00BFF296 /* Maket_hh_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Maket_hh_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFC820772BA8572B00BFF296 /* Maket_hh_AppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Maket_hh_AppApp.swift; sourceTree = "<group>"; };
 		CFC820792BA8572B00BFF296 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -159,8 +163,6 @@
 		CF5282562BAE31AC008236C6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				CFC820C72BAC611600BFF296 /* NetworkService */,
-				CF5282772BB07176008236C6 /* StorageManager */,
 				CFC820772BA8572B00BFF296 /* Maket_hh_AppApp.swift */,
 				CFC820792BA8572B00BFF296 /* ContentView.swift */,
 			);
@@ -275,6 +277,14 @@
 			path = FavoriteModel;
 			sourceTree = "<group>";
 		};
+		CF52827F2BB1C36D008236C6 /* MainTabBarViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CF5282802BB1C384008236C6 /* MainTabBarView.swift */,
+			);
+			path = MainTabBarViewModel;
+			sourceTree = "<group>";
+		};
 		CFC8206B2BA8572B00BFF296 = {
 			isa = PBXGroup;
 			children = (
@@ -298,6 +308,8 @@
 		CFC820762BA8572B00BFF296 /* Maket_hh_App */ = {
 			isa = PBXGroup;
 			children = (
+				CF5282772BB07176008236C6 /* StorageManager */,
+				CFC820C72BAC611600BFF296 /* NetworkService */,
 				CF5282682BB0306B008236C6 /* Flows */,
 				CFC820DA2BACAA6D00BFF296 /* Coordinator */,
 				CFC820AF2BA89F9900BFF296 /* Extension */,
@@ -336,6 +348,7 @@
 		CFC820A12BA89A3600BFF296 /* MainTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				CF52827F2BB1C36D008236C6 /* MainTabBarViewModel */,
 				CFC820A22BA89A4500BFF296 /* MainTabBar.swift */,
 			);
 			path = MainTabBar;
@@ -354,6 +367,7 @@
 			children = (
 				CFC820AA2BA89C5300BFF296 /* LoginViewComponents */,
 				CFC820A82BA89C4500BFF296 /* LoginView.swift */,
+				CF52827D2BB1A9AC008236C6 /* LoginViewModel.swift */,
 			);
 			path = LoginView;
 			sourceTree = "<group>";
@@ -578,6 +592,7 @@
 				CFC820B62BA99E2700BFF296 /* CodeView.swift in Sources */,
 				CF52827C2BB0751A008236C6 /* FavoriteModel.swift in Sources */,
 				CFC820D12BAC633E00BFF296 /* NetworkModel.swift in Sources */,
+				CF5282812BB1C384008236C6 /* MainTabBarView.swift in Sources */,
 				CFC820B12BA89FAF00BFF296 /* HexColor.swift in Sources */,
 				CF5282792BB0718E008236C6 /* StorageManager.swift in Sources */,
 				CFC820C42BAB465300BFF296 /* SearchViewFooter.swift in Sources */,
@@ -604,6 +619,7 @@
 				CFC820C22BAB462500BFF296 /* SearchView.swift in Sources */,
 				CFC8207A2BA8572B00BFF296 /* ContentView.swift in Sources */,
 				CF5282672BB03034008236C6 /* DescriptionViewHeader.swift in Sources */,
+				CF52827E2BB1A9AC008236C6 /* LoginViewModel.swift in Sources */,
 				CFC820A92BA89C4500BFF296 /* LoginView.swift in Sources */,
 				CFC820DC2BACAA9600BFF296 /* ContainerView.swift in Sources */,
 				CFC820D72BAC6C0300BFF296 /* NetworkLogger.swift in Sources */,

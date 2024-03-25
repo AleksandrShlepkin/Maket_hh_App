@@ -9,47 +9,31 @@ import SwiftUI
 
 struct MainTabBar: View {
     
-    @State var emailText: String?
+    @StateObject var viewModel = MainTabBarViewModel()
+
+    @EnvironmentObject var field: OTPViewModel
     
     var body: some View {
         TabView {
-            SearchView()
-                .tabItem {
-                    Image("Search")
-                    Text("Search")
-                        .foregroundStyle(Color(.gray))
-                }
-            FavoriteView()
-                .tabItem {
-                    Image(systemName: "heart")
-                    Text("Search")
-                        .foregroundStyle(Color(.gray))
-                }
-            SearchView()
-                .tabItem {
-                    Image("Search")
-                    Text("Search")
-                        .foregroundStyle(Color(.gray))
-                }
-            SearchView()
-                .tabItem {
-                    Image("Search")
-                    Text("Search")
-                        .foregroundStyle(Color(.gray))
-                }
-            SearchView()
-                .tabItem {
-                    Image("Search")
-                    Text("Search")
-                        .foregroundStyle(Color(.gray))
-                }
+            
+            getView(field.fields, key: .search, name: .search, image: .search)
+            getView(field.fields, key: .favorite, name: .favorite, image: .favorite)
+            getView(field.fields, key: .response, name: .response, image: .response)
+            getView(field.fields, key: .message, name: .message, image: .message)
+            getView(field.fields, key: .profile, name: .profile, image: .profile)
+
         }
-        .toolbar(.visible, for: .tabBar)
         .toolbarBackground(Color.black, for: .tabBar)
-        .toolbarColorScheme(.dark, for: .tabBar)
+    }
+    
+    @ViewBuilder
+    private func getView(_ array: [String], key: Title, name: Name, image: Images) -> some View {
+        
+        viewModel.getView(array, key: key, name: name, image: image)
     }
 }
 
+
 #Preview {
-    MainTabBar(emailText: "")
+    MainTabBar()
 }

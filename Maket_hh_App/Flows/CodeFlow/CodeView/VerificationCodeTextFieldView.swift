@@ -16,18 +16,17 @@ public enum VerificationCodeFocusField: Hashable {
 
 struct VerificationCodeTextFieldView: View {
     
-    @StateObject var model: OTPViewModel = .init()
+    @EnvironmentObject var model: OTPViewModel
     @FocusState var activeField: VerificationCodeFocusField?
     @State var cells: Int
     @EnvironmentObject private var coordinator: Coordinator
-
+    
     var body: some View {
         VStack {
             HStack{
                 ForEach(0..<cells, id: \.self) { index in
                     TextField("", text: $model.fields[index])
                         .frame(width: 50, height: 50)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
                         .keyboardType(.numberPad)
                         .textContentType(.oneTimeCode)
                         .multilineTextAlignment(.center)
@@ -69,7 +68,7 @@ struct VerificationCodeTextFieldView: View {
         }
         
         if value == ["1", "2", "3", "4"] {
-            coordinator.fullScreenPresent(.tab)
+            coordinator.pagePresent(.tab)
             coordinator.goToRoot()
         }
     }

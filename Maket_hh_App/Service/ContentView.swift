@@ -12,6 +12,8 @@ struct ContentView: View {
     
     @StateObject var viewModel = SearhViewModel(networkService: APIService())
     @StateObject var vacancy = VacancyViewModel()
+    @StateObject var emailText = LoginViewModel()
+    @StateObject var field = OTPViewModel()
 
 
     
@@ -19,6 +21,8 @@ struct ContentView: View {
         CoordinatorView()
             .environmentObject(viewModel)
             .environmentObject(vacancy)
+            .environmentObject(emailText)
+            .environmentObject(field)
     }
 }
 
